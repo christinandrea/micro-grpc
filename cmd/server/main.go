@@ -1,8 +1,8 @@
 package main
 
 import (
-	protoGen "github.com/christinandrea/micro-grpc/internal/protoGen"
 	pb "github.com/christinandrea/micro-grpc/internal/impl"
+	protoGen "github.com/christinandrea/micro-grpc/internal/protoGen"
 
 	gRPC "google.golang.org/grpc"
 
@@ -15,7 +15,7 @@ func main() {
 	netListener := getNetListener(9000)
 	grpcServer := gRPC.NewServer()
 
-	repositoryImpl := impl.NewRepoImpl()
+	repositoryImpl := pb.NewRepoImpl()
 	protoGen.RegisterRepositoryServiceServer(grpcServer, repositoryImpl)
 
 	if err := grpcServer.Serve(netListener); err != nil {

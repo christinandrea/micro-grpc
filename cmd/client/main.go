@@ -2,14 +2,11 @@ package main
 
 import (
 	protoGen "github.com/christinandrea/micro-grpc/internal/protoGen"
-	pb "github.com/christinandrea/micro-grpc/internal/impl"
 
-	gRPC "google.golang.org/gRPC"
-	
+	gRPC "google.golang.org/grpc"
+
 	"context"
 	"fmt"
-
-	
 )
 
 func main() {
@@ -17,7 +14,7 @@ func main() {
 
 	conn, e := gRPC.Dial(serverAddress, gRPC.WithInsecure())
 
-	if err != nil {
+	if e != nil {
 		panic(e)
 	}
 
@@ -26,13 +23,13 @@ func main() {
 	for i := range [10]int{} {
 		repoModel := protoGen.Repository{
 			Id:   uint64(i),
-			name: string("grpc-trial"),
+			Name: string("Project PKL"),
 		}
 		if respMessage, e := client.Add(context.Background(), &repoModel); e != nil {
 			panic(fmt.Sprintf("cant insert : %v", e))
 
 		} else {
-			fmt.Println("inserting record...")
+			fmt.Println("Record inserted.........")
 			fmt.Println(respMessage)
 		}
 	}
