@@ -1,9 +1,10 @@
 package main
 
 import (
-	"internal/protoGen"
-	"internal/impl"
-	"google.golang.org/gRPC"
+	protoGen "github.com/christinandrea/micro-grpc/internal/protoGen"
+	pb "github.com/christinandrea/micro-grpc/internal/impl"
+
+	gRPC "google.golang.org/gRPC"
 	
 	"context"
 	"fmt"
