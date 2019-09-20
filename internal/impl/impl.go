@@ -19,7 +19,7 @@ func NewRepoImpl() *RepositoryImpl {
 //Add function to implement gRPC service
 func (repoImpl *RepositoryImpl) Add(ctx context.Context, in *protoGen.Repository) (*protoGen.AddedRepoResponse, error) {
 
-	log.Println("Repository persisted to the storage")
+	log.Println("Repository is being added to the storage")
 
 	return &protoGen.AddedRepoResponse{
 		AddedRepo: in,

@@ -13,12 +13,12 @@ import (
 
 func main() {
 	netListener := getNetListener(9000)
-	grpcServer := gRPC.NewServer()
+	server := gRPC.NewServer()
 
 	repositoryImpl := pb.NewRepoImpl()
-	protoGen.RegisterRepositoryServiceServer(grpcServer, repositoryImpl)
+	protoGen.RegisterRepositoryServiceServer(server, repositoryImpl)
 
-	if err := grpcServer.Serve(netListener); err != nil {
+	if err := server.Serve(netListener); err != nil {
 		log.Fatalf("failed to start :%s", err)
 	}
 }
